@@ -1,4 +1,10 @@
 Videoapp::Application.routes.draw do
+  match '/auth/:provider/callback' => 'authentications#create'
+  resources :authentications
+
+  resources :videos
+  match '/users/videos' => 'videos#show_user_videos'
+
   devise_for :users
 
   # The priority is based upon order of creation:
@@ -50,7 +56,7 @@ Videoapp::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  # root :to => 'welcome#index'
+  root :to => "videos#index"
 
   # See how all your routes lay out with "rake routes"
 

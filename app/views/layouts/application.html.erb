@@ -8,6 +8,22 @@
 </head>
 <body>
 
+
+<div id="user_nav">
+  <% if user_signed_in? %>
+    Signed in as <%= current_user.full_name %>. Not you?
+    <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
+  <% else %>
+		<a href="/auth/linkedin" class="auth_provider">
+		  <%= image_tag "linkedin_signin.png",  :alt => "Linkedin" %>
+		  Linkedin
+		</a>
+
+  <% end %>
+</div>
+
+
+
 <%= yield %>
 
 </body>

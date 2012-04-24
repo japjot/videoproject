@@ -23,6 +23,9 @@ end
 gem 'jquery-rails'
 
 gem 'devise'
+gem 'devise_invitable', '~> 1.0.0'
+gem 'omniauth'
+gem 'omniauth-linkedin'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
