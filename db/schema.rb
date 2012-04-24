@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120424190559) do
+ActiveRecord::Schema.define(:version => 20120424211939) do
 
   create_table "authentications", :force => true do |t|
     t.integer  "user_id"
@@ -53,11 +53,11 @@ ActiveRecord::Schema.define(:version => 20120424190559) do
     t.integer  "user_id"
     t.string   "name"
     t.text     "summary"
-    t.text     "source"
     t.text     "url"
-    t.text     "location"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.string   "youtube_id"
+    t.integer  "duration"
   end
 
   add_index "videos", ["user_id", "created_at"], :name => "index_videos_on_user_id_and_created_at"

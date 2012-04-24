@@ -35,6 +35,7 @@ class VideosController < ApplicationController
   def show
     @video = Video.find(params[:id])
 
+
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @video }
@@ -62,8 +63,25 @@ class VideosController < ApplicationController
   def create
     @video = current_user.videos.build(params[:video])
 
+
+
+    require 'uri'
+
+    query_string = URI.parse(@video.url).query
+    parameters = Hash[URI.decode_www_form(query_string)]
+    puts parameters['v'] # => aNdMiIAlK0g
+
+
+    client = YouTubeIt::Client.new(:dev_key => "AI39si6hkRNCL77mzzv1LycIohZtksVIi0L5S9lQMx6crqOfGdyKcB2U2M5WHeNBUT2VLgTVzjR9rxPa1RJZw-sZ6wqtnaZ7AA")
+    @video.youtube_id = parameters['v'] # => aNdMiIAlK0g
+
+    this_video = client.video_by(@video.youtube_id)
+    @video.duration = this_video.duration 
+
+
+
     respond_to do |format|
-      if @video.save
+      if @video.save ##and video is over 60 seconds in duration 
         format.html { redirect_to @video, notice: 'Video was successfully created.' }
         format.json { render json: @video, status: :created, location: @video }
       else
