@@ -1,8 +1,8 @@
 class RemoveCreateDestroyFromAuthentications < ActiveRecord::Migration
   def up
-  	remove_column :authentications, :create,  :boolean 
-  	remove_column :authentications,  :destroy, :boolean 
-  	remove_column :authentications,  :index,  :boolean 
+  	remove_column :authentications, :create
+  	remove_column :authentications,  :destroy
+  	remove_column :authentications,  :index
   end
 
   def down
