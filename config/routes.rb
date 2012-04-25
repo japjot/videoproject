@@ -1,4 +1,6 @@
 Videoapp::Application.routes.draw do
+  resources :invites
+
   match '/auth/:provider/callback' => 'authentications#create'
   resources :authentications
 

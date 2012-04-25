@@ -3,6 +3,7 @@
 </div> 
 <h1>Listing videos</h1>
 
+
     <% @videos.each do |video| %>
       <div class="span4">
         <h2><%= video.name %> <%= link_to '(Edit)', edit_video_path(video) %> <%= link_to '(Delete)', video, confirm: 'Are you sure?', method: :delete %> </h2>

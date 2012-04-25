@@ -124,14 +124,17 @@ class VideosController < ApplicationController
 
   def vote_up
     ##need to add ajax for this and to change the number next to the vote. 
+    @video = Video.find(params[:id])
     begin
-      current_user.vote_for(Video.find(params[:id]))
-      redirect_to root_path 
+      current_user.vote_for(@video)
+      #redirect_to root_path 
+      render :partial => "votecount"
 #      render :nothing => true, :status => 200
     rescue ActiveRecord::RecordInvalid
-      redirect_to root_path       
-#      render :nothing => true, :status => 404
+#      redirect_to root_path       
+      render :nothing => true, :status => 404
     end
+
   end
 
 

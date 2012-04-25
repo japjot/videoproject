@@ -4,7 +4,6 @@ class AuthenticationsController < ApplicationController
   def index
     @authentications = current_user.authentications if current_user
 
-
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @authentications }
@@ -51,9 +50,16 @@ class AuthenticationsController < ApplicationController
       @user.last_name = auth['info']['last_name']
       @user.save
       @authentication.user_id = @user.id
+      @authentication.token = auth['credentials']['token']
+      @authentication.secret= auth['credentials']['secret']
+
       @authentication.save
       sign_in @user 
     else 
+      #render :text => request.env["omniauth.auth"].to_yaml and return 
+      @authentication.token = auth['credentials']['token'] 
+      @authentication.secret = auth['credentials']['secret']
+      @authentication.save
       sign_in @authentication.user 
     end
     #current_user.authentications.find_or_create_by_provider_and_uid(auth['provider'], auth['uid'])
