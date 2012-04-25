@@ -66,7 +66,6 @@ class VideosController < ApplicationController
   def create
     @video = current_user.videos.build(params[:video])
 
-new
 
     require 'uri'
 
@@ -75,10 +74,10 @@ new
     puts parameters['v'] # => aNdMiIAlK0g
 
 
-    client = YouTubeIt::Client.new(:dev_key => "AI39si6hkRNCL77mzzv1LycIohZtksVIi0L5S9lQMx6crqOfGdyKcB2U2M5WHeNBUT2VLgTVzjR9rxPa1RJZw-sZ6wqtnaZ7AA")
+    @yt_client = YouTubeIt::Client.new(:dev_key => "AI39si6hkRNCL77mzzv1LycIohZtksVIi0L5S9lQMx6crqOfGdyKcB2U2M5WHeNBUT2VLgTVzjR9rxPa1RJZw-sZ6wqtnaZ7AA")
     @video.youtube_id = parameters['v'] # => aNdMiIAlK0g
 
-    this_video = client.video_by(@video.youtube_id)
+    this_video = @yt_client.video_by(@video.youtube_id)
     @video.duration = this_video.duration 
 
 
