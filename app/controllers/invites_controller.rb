@@ -10,7 +10,7 @@ class InvitesController < ApplicationController
 
     if current_user
       @li_client = LinkedIn::Client.new
-      @li_client.authorize_from_access(current_user.authentications.first.token, current_user.authentications.first.secret)      
+      @li_client.authorize_from_access(current_user.authentications.first.token, current_user.authentications.first.secret)
     end 
 
 
@@ -36,6 +36,20 @@ class InvitesController < ApplicationController
   def new
     @invite = Invite.new
 
+    @li_client = LinkedIn::Client.new
+    @li_client.authorize_from_access(current_user.authentications.first.token, current_user.authentications.first.secret)
+    @friend = @li_client.profile(:id => params[:linkedin_id])
+
+    @invite_subject = 'Want an invite for Gloopt?'
+    @invite_body = 'Hey ' + @friend.first_name + ', I just got a few invitations and I thought you might want one.  
+
+Just visit http://gloopt.com/beta    
+
+Best,  
+
+' + current_user.first_name 
+#need to make these into constants or methods and store them somewhere.  
+
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @invite }
@@ -54,8 +68,17 @@ class InvitesController < ApplicationController
 
     respond_to do |format|
       if @invite.save
-        format.html { redirect_to @invite, notice: 'Invite was successfully created.' }
-        format.json { render json: @invite, status: :created, location: @invite }
+        @li_client = LinkedIn::Client.new
+        @li_client.authorize_from_access(current_user.authentications.first.token, current_user.authentications.first.secret)
+        @message_path = "/people/" + @invite.linkedin_id 
+
+        @li_client.send_message( :recipients => {:values => [:person => {:_path => @message_path } ]}  , :subject => @invite.subject,:body => @invite.body  ) 
+        @user = current_user
+        @invites_left = @user.invites_left 
+        @user.invites_left = @invites_left -1 
+        @user.save 
+        format.html { redirect_to invites_path, notice: 'Invite was sent successfully.' }
+        format.json { render json: invites_path, status: :created, location: @invite }
       else
         format.html { render action: "new" }
         format.json { render json: @invite.errors, status: :unprocessable_entity }

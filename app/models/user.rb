@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
   acts_as_voter 
 
   has_many :authentications
+  has_many :invites 
 
   devise :invitable, :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable 

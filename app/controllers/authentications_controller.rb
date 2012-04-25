@@ -48,6 +48,7 @@ class AuthenticationsController < ApplicationController
       @user = User.new 
       @user.first_name = auth['info']['first_name']      
       @user.last_name = auth['info']['last_name']
+      @user.invites_left = 3
       @user.save
       @authentication.user_id = @user.id
       @authentication.token = auth['credentials']['token']

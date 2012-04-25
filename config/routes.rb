@@ -1,6 +1,6 @@
 Videoapp::Application.routes.draw do
   resources :invites
-
+  match '/invites/new/:linkedin_id' => 'invites#new'
   match '/auth/:provider/callback' => 'authentications#create'
   resources :authentications
 

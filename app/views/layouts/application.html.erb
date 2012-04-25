@@ -21,7 +21,7 @@
             <% if user_signed_in? %>
               <li><%= link_to "All Videos", videos_path  %></li>
               <li><%= link_to "Your Videos", users_videos_path  %></li>
-              <li><%= link_to "Invites Left: 3", invites_path %></li>
+              <li><%= link_to "Invites Left: "+ current_user.invites_left.to_s, invites_path %></li>
             <% else %> 
               <li><%= link_to "Home", root_path  %></li>
               <li><%= link_to "Join the Waiting List", "#" %> </li>

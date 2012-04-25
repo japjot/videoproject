@@ -1,12 +1,14 @@
-<h1>Listing invites</h1>
-
-<h2>Need to add capability to invite users from this list.  Didn't decide 100% how to implement yet.</h2>
-
-        <% @li_client.connections.map { |c| %> 
-            <%= c.first_name  %> <%= c.last_name %> <%= c.headline %>  -- <%= c.id %>  <br />
-        <% } %>          
+<h1>Invite Your Linkedin Connections to Gloopt</h1>
 
 
+<% if current_user.invites_left > 0 %> 
+  <% @li_client.connections.map { |c| %> 
+      
+      <%= link_to name_and_headline(c), '/invites/new/'+c.id  %>  <br />
+  <% } %>          
+<% else %> 
+  <h2>You do not have any invites left.  We will email you when there are more available.  </h2>
+<% end %> 
 
 <br />
 
