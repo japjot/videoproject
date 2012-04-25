@@ -1,28 +1,49 @@
-<h1>Listing videos</h1>
+<h1>The Best Startup Pitches on the Web</h1>
 
-<table>
-  <tr>
-    <th>User</th>
-    <th>Name</th>
-    <th>Summary</th>
-    <th>Url</th>
-    <th>YouTube ID</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+    <% @videos.each do |video| %>
+        <div class="span4">
+        <h2><%= video.name %> </h2>
 
-<% @videos.each do |video| %>
-  <tr>
-    <td><%= video.user_id %></td>
-    <td><%= video.name %></td>
-    <td><%= video.summary %></td>
-    <td><%= video.url %></td>
-    <td><%= video.youtube_id %></td>
-    <td><%= link_to 'Show', video %></td>
-    <td><%= link_to 'Edit', edit_video_path(video) %></td>
-    <td><%= link_to 'Destroy', video, confirm: 'Are you sure?', method: :delete %></td>
-  </tr>
-<% end %>
-</table>
+        <p><%= show_video(@yt_client, video) %>  </p>
+        <p><%= link_to "View Details", video_path(video.id), :class => "btn" %> </p>
+        </div><!--/span4-->
+
+    <% end %>
+    <% @videos.each do |video| %>
+        <div class="span4">
+        <h2><%= video.name %> </h2>
+
+        <p><%= show_video(@yt_client, video) %>  </p>
+        <p><%= link_to "View Details", video_path(video.id), :class => "btn" %> </p>
+        </div><!--/span4-->
+
+    <% end %>
+    <% @videos.each do |video| %>
+        <div class="span4">
+        <h2><%= video.name %> </h2>
+
+        <p><%= show_video(@yt_client, video) %>  </p>
+        <p><%= link_to "View Details", video_path(video.id), :class => "btn" %> </p>
+        </div><!--/span4-->
+
+    <% end %>
+    <% @videos.each do |video| %>
+        <div class="span4">
+        <h2><%= video.name %> </h2>
+
+        <p><%= show_video(@yt_client, video) %>  </p>
+        <p><%= link_to "View Details", video_path(video.id), :class => "btn" %> </p>
+        </div><!--/span4-->
+
+    <% end %>
+    <% @videos.each do |video| %>
+        <div class="span4">
+        <h2><%= video.name %> </h2>
+
+        <p><%= show_video(@yt_client, video) %>  </p>
+        <p><%= link_to "View Details", video_path(video.id), :class => "btn" %> </p>
+        </div><!--/span4-->
+
+    <% end %>
+
 

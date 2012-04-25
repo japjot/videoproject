@@ -1,27 +1,10 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-    <%= raw @yt_client.video_by(@video.youtube_id).embed_html %>
+<h1><%= @video.name %></h1>
 
-</p>
-<h3>
-  <%= @video.name %>
-</h3>
-<p>
-  <b>url:</b> 
-  <a href="http://www.youtube.com/watch?v=<%= @video.youtube_id %>&feature=youtube_it" target="_blank">http://www.youtube.com/watch?v=<%= @video.youtube_id %></a>
-</p>
+<p>    
+  <%= show_large_video(@yt_client, @video) %>
 
-
-
-<p>
-  <b>User:</b>
-  <%= @video.user_id %>
-</p>
-
-<p>
-  <b>Name:</b>
-  <%= @video.name %>
 </p>
 
 <p>
@@ -29,12 +12,11 @@
   <%= @video.summary %>
 </p>
 
-
 <p>
-  <b>Url:</b>
-  <%= @video.url %>
+  <b>url:</b> 
+  <a href="http://www.youtube.com/watch?v=<%= @video.youtube_id %>&feature=youtube_it" target="_blank">http://www.youtube.com/watch?v=<%= @video.youtube_id %></a>
 </p>
 
 
 <%= link_to 'Edit', edit_video_path(@video) %> |
-<%= link_to 'Back', videos_path %>
+<%= link_to 'All Your Videos', users_videos_path %>
