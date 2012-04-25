@@ -16,7 +16,8 @@ class VideosController < ApplicationController
 
   def show_user_videos 
     if user_signed_in?
-      @videos = Video.find_by_user_id(current_user)
+      client = YouTubeIt::Client.new(:dev_key => "AI39si6hkRNCL77mzzv1LycIohZtksVIi0L5S9lQMx6crqOfGdyKcB2U2M5WHeNBUT2VLgTVzjR9rxPa1RJZw-sZ6wqtnaZ7AA")
+      @videos = Video.find_all_by_user_id(current_user)
       redirect_to new_video_path and return if @videos.nil?
 
       respond_to do |format|
@@ -33,6 +34,7 @@ class VideosController < ApplicationController
   # GET /videos/1
   # GET /videos/1.json
   def show
+    @yt_client = YouTubeIt::Client.new(:dev_key => "AI39si6hkRNCL77mzzv1LycIohZtksVIi0L5S9lQMx6crqOfGdyKcB2U2M5WHeNBUT2VLgTVzjR9rxPa1RJZw-sZ6wqtnaZ7AA")
     @video = Video.find(params[:id])
 
 
@@ -63,7 +65,7 @@ class VideosController < ApplicationController
   def create
     @video = current_user.videos.build(params[:video])
 
-
+new
 
     require 'uri'
 

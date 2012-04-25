@@ -6,5 +6,5 @@ class Video < ActiveRecord::Base
 	validates_inclusion_of :duration, :in => 0..60, :message => "Video must be shorter than 60 seconds"
 
 
-	belongs_to :user, :dependent => :destroy 
+	belongs_to :user 
 end

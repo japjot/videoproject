@@ -1,6 +1,20 @@
 <p id="notice"><%= notice %></p>
 
 <p>
+    <%= raw @yt_client.video_by(@video.youtube_id).embed_html %>
+
+</p>
+<h3>
+  <%= @video.name %>
+</h3>
+<p>
+  <b>url:</b> 
+  <a href="http://www.youtube.com/watch?v=<%= @video.youtube_id %>&feature=youtube_it" target="_blank">http://www.youtube.com/watch?v=<%= @video.youtube_id %></a>
+</p>
+
+
+
+<p>
   <b>User:</b>
   <%= @video.user_id %>
 </p>

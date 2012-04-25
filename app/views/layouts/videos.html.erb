@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Videoapp</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+  <div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+      <div class="container-fluid">
+        <a class="btn btn-navbar" data-target=".nav-collapse" data-toggle="collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </a>
+        <a class="brand" href="#">Videoapp</a>
+        <div class="container-fluid nav-collapse">
+          <ul class="nav">
+            <% if user_signed_in? %>
+              <li><%= link_to "All Videos", videos_path  %></li>
+              <li><%= link_to "Your Videos", users_videos_path  %></li>
+              <li><%= link_to "Invites Left: 3", "/path4" %></li>
+            <% else %> 
+              <li><%= link_to "Home", root_path  %></li>
+            <% end %> 
+          </ul>
+          <ul class="nav pull-right">
+            <% if user_signed_in? %>
+              <li> <span class="text-on-navbar">Signed in as <%= current_user.full_name %>. Not you? </span> </li>
+              <li> <%= link_to "Sign out", destroy_user_session_path, :method => :delete %> </li>
+            <% else %>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Sign In <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu">
+                  <li>
+                    <a href="/auth/linkedin" class="auth_provider">
+                      <%= image_tag "linkedin_signin.png",  :alt => "Linkedin" %>
+                    </a>
+                  </li> 
+                </ul>
+              </li>
+
+            <% end %>
+
+          </ul>          
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+  </div>
+
+
+
+
+  <div class="container">
+    <div class="row">
+      <div class="span9"><%= yield %></div>
+      <div class="span3">
+        <h2>About Us</h2>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      </div>
+    </div>
+  </div>
+
+
+</body>
+</html>
