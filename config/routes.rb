@@ -2,7 +2,11 @@ Videoapp::Application.routes.draw do
   match '/auth/:provider/callback' => 'authentications#create'
   resources :authentications
 
-  resources :videos
+  resources :videos do 
+    member do 
+      post :vote_up
+    end
+  end 
   match '/users/videos' => 'videos#show_user_videos'
 
   devise_for :users

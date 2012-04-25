@@ -1,4 +1,5 @@
 class Video < ActiveRecord::Base
+	acts_as_voteable
 	attr_accessible :name, :summary, :source, :url, :location
 
 	validates :user_id, presence: true

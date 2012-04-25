@@ -28,6 +28,7 @@ gem 'devise_invitable', '~> 1.0.0'
 gem 'omniauth'
 gem 'omniauth-linkedin'
 gem 'youtube_it'
+gem 'thumbs_up'
 
 
 # To use ActiveModel has_secure_password

@@ -123,6 +123,19 @@ new
   end
 
 
+  def vote_up
+    ##need to add ajax for this and to change the number next to the vote. 
+    begin
+      current_user.vote_for(Video.find(params[:id]))
+      redirect_to root_path 
+#      render :nothing => true, :status => 200
+    rescue ActiveRecord::RecordInvalid
+      redirect_to root_path       
+#      render :nothing => true, :status => 404
+    end
+  end
+
+
 
   private
     def user_signed_in

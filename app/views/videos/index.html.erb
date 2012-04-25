@@ -6,8 +6,29 @@
 
         <p><%= show_video(@yt_client, video) %>  </p>
         <p><%= link_to "View Details", video_path(video.id), :class => "btn" %> </p>
-        </div><!--/span4-->
+        <% if current_user %>     
+            <p> <%= video.votes_for %> | <%= link_to('Vote for this video!', vote_up_video_path(video), :method => :post) %> </p>
+        <% else %> 
+            <p> You need to join or login in order to vote </p>
+        <% end %> 
 
+        </div><!--/span4-->
+    <% end %>
+
+
+    <% @videos.each do |video| %>
+        <div class="span4">
+        <h2><%= video.name %> </h2>
+
+        <p><%= show_video(@yt_client, video) %>  </p>
+        <p><%= link_to "View Details", video_path(video.id), :class => "btn" %> </p>
+        <% if current_user %>     
+            <p> <%= video.votes_for %> | <%= link_to('Vote for this video!', vote_up_video_path(video), :method => :post) %> </p>
+        <% else %> 
+            <p> You need to join or login in order to vote </p>
+        <% end %> 
+
+        </div><!--/span4-->
     <% end %>
     <% @videos.each do |video| %>
         <div class="span4">
@@ -15,8 +36,13 @@
 
         <p><%= show_video(@yt_client, video) %>  </p>
         <p><%= link_to "View Details", video_path(video.id), :class => "btn" %> </p>
-        </div><!--/span4-->
+        <% if current_user %>     
+            <p> <%= video.votes_for %> | <%= link_to('Vote for this video!', vote_up_video_path(video), :method => :post) %> </p>
+        <% else %> 
+            <p> You need to join or login in order to vote </p>
+        <% end %> 
 
+        </div><!--/span4-->
     <% end %>
     <% @videos.each do |video| %>
         <div class="span4">
@@ -24,8 +50,13 @@
 
         <p><%= show_video(@yt_client, video) %>  </p>
         <p><%= link_to "View Details", video_path(video.id), :class => "btn" %> </p>
-        </div><!--/span4-->
+        <% if current_user %>     
+            <p> <%= video.votes_for %> | <%= link_to('Vote for this video!', vote_up_video_path(video), :method => :post) %> </p>
+        <% else %> 
+            <p> You need to join or login in order to vote </p>
+        <% end %> 
 
+        </div><!--/span4-->
     <% end %>
     <% @videos.each do |video| %>
         <div class="span4">
@@ -33,8 +64,13 @@
 
         <p><%= show_video(@yt_client, video) %>  </p>
         <p><%= link_to "View Details", video_path(video.id), :class => "btn" %> </p>
-        </div><!--/span4-->
+        <% if current_user %>     
+            <p> <%= video.votes_for %> | <%= link_to('Vote for this video!', vote_up_video_path(video), :method => :post) %> </p>
+        <% else %> 
+            <p> You need to join or login in order to vote </p>
+        <% end %> 
 
+        </div><!--/span4-->
     <% end %>
     <% @videos.each do |video| %>
         <div class="span4">
@@ -42,8 +78,13 @@
 
         <p><%= show_video(@yt_client, video) %>  </p>
         <p><%= link_to "View Details", video_path(video.id), :class => "btn" %> </p>
-        </div><!--/span4-->
+        <% if current_user %>     
+            <p> <%= video.votes_for %> | <%= link_to('Vote for this video!', vote_up_video_path(video), :method => :post) %> </p>
+        <% else %> 
+            <p> You need to join or login in order to vote </p>
+        <% end %> 
 
+        </div><!--/span4-->
     <% end %>
 
 

@@ -1,6 +1,8 @@
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
+  acts_as_voter 
+
   has_many :authentications
 
   devise :invitable, :database_authenticatable, :registerable,
@@ -12,6 +14,7 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me
 
 	has_many :videos, :dependent => :destroy 
+
 
 	def full_name 
 		return self.first_name + ' ' + self.last_name 
