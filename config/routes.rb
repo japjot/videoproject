@@ -1,18 +1,26 @@
 Videoapp::Application.routes.draw do
+
+  resources :waiting_lists
+
   resources :invites
-  match '/invites/new/:linkedin_id' => 'invites#new'
-  match '/auth/:provider/callback' => 'authentications#create'
-  resources :authentications
+  match '/users/videos' => 'videos#show_user_videos'
+  match 'invites/new/:linkedin_id' => 'invites#new'
+  match 'auth/:provider/callback' => 'authentications#create'
+  match 'users/email' => 'users#email', :as => :user
+  put 'users/update_email'
+
+
+  resources :authentications  
 
   resources :videos do 
     member do 
       post :vote_up
     end
   end 
-  match '/users/videos' => 'videos#show_user_videos'
+
+  match '/beta' => 'videos#index'
 
   devise_for :users
-
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -62,7 +70,7 @@ Videoapp::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  root :to => "videos#index"
+  root :to => "waiting_lists#new"
 
   # See how all your routes lay out with "rake routes"
 

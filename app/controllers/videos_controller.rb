@@ -6,6 +6,7 @@ class VideosController < ApplicationController
   # GET /videos
   # GET /videos.json
   def index
+
     @yt_client = YouTubeIt::Client.new(:dev_key => "AI39si6hkRNCL77mzzv1LycIohZtksVIi0L5S9lQMx6crqOfGdyKcB2U2M5WHeNBUT2VLgTVzjR9rxPa1RJZw-sZ6wqtnaZ7AA")
     @videos = Video.all
 
@@ -59,12 +60,15 @@ class VideosController < ApplicationController
   # GET /videos/1/edit
   def edit
     @video = Video.find(params[:id])
+    redirect_to @video unless @video.user_id == current_user.id 
   end
 
   # POST /videos
   # POST /videos.json
   def create
     @video = current_user.videos.build(params[:video])
+
+    @video.save(:validate => false) 
 
 
     require 'uri'

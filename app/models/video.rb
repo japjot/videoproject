@@ -5,9 +5,11 @@ class Video < ActiveRecord::Base
 	validates :user_id, presence: true
 	validates :duration, presence: true 
 	validates_inclusion_of :duration, :in => 0..60, :message => "Video must be shorter than 60 seconds"
+	validates_format_of :url, :with => /^(http:\/\/)?(?:www\.)?youtube.com\/watch\?(?=.*v=\w+)(?:(?:\S(?!http))+)?$/ , 
+														:message => 'this is not a valid youtube url'
+	validates :youtube_id, presence: true 
 
 
 	belongs_to :user 
-
 
 end

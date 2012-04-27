@@ -5,6 +5,7 @@
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= csrf_meta_tags %>
   <link rel="shortcut icon" type="image/png" href="favicon.ico" />
+
 </head>
 <body>
 
@@ -22,31 +23,11 @@
             <% if user_signed_in? %>
               <li><%= link_to "All Videos", videos_path  %></li>
               <li><%= link_to "Your Videos", users_videos_path  %></li>
-              <li><% link_to "Invites Left: "+ current_user.invites_left.to_s, invites_path %></li>
+              <li><%= link_to "Invites Left: 3", invites_path %></li>
             <% else %> 
               <li><%= link_to "Home", root_path  %></li>
             <% end %> 
           </ul>
-          <ul class="nav pull-right">
-            <% if user_signed_in? %>
-              <li> <span class="text-on-navbar">Signed in as <%= current_user.full_name %>. Not you? </span> </li>
-              <li> <%= link_to "Sign out", destroy_user_session_path, :method => :delete %> </li>
-            <% else %>
-              <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Sign In <b class="caret"></b>
-                </a>
-                <ul class="dropdown-menu">
-                  <li>
-                    <a href="/auth/linkedin" class="auth_provider">
-                      <%= image_tag "linkedin_signin.png",  :alt => "Linkedin" %>
-                    </a>
-                  </li> 
-                </ul>
-              </li>
-
-            <% end %>
-
-          </ul>          
         </div><!--/.nav-collapse -->
       </div>
     </div>

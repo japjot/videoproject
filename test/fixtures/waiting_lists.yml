@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  email: MyString
+  email_sent: false
+  email_sent_at: 2012-04-26 12:15:29
+
+two:
+  email: MyString
+  email_sent: false
+  email_sent_at: 2012-04-26 12:15:29

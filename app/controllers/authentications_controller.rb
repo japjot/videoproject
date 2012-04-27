@@ -43,32 +43,32 @@ class AuthenticationsController < ApplicationController
     #render :text => request.env["omniauth.auth"].to_yaml
 
     auth = request.env["omniauth.auth"]
-    @authentication = Authentication.find_or_create_by_provider_and_uid(auth['provider'], auth['uid'])
-    if @authentication.user.nil?  
-      @user = User.new 
-      @user.first_name = auth['info']['first_name']      
-      @user.last_name = auth['info']['last_name']
-      @user.invites_left = 3
-      @user.save
-      @authentication.user_id = @user.id
-      @authentication.token = auth['credentials']['token']
-      @authentication.secret= auth['credentials']['secret']
+    @authentication = Authentication.find_by_provider_and_uid(auth['provider'], auth['uid'])
 
-      @authentication.save
-      sign_in @user 
-    else 
-      #render :text => request.env["omniauth.auth"].to_yaml and return 
+    if @authentication
       @authentication.token = auth['credentials']['token'] 
       @authentication.secret = auth['credentials']['secret']
       @authentication.save
       sign_in @authentication.user 
+    else #if first time user. 
+      @user = User.new(:first_name => auth['info']['first_name'], :last_name => auth['info']['last_name'], :invites_left => 3)
+      @user.save(:validate => false) 
+      @user.authentications.build(:token => auth['credentials']['token'], :secret =>  auth['credentials']['secret'], :provider => auth['provider'], :uid => auth['uid']).save
+
+      puts 'mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm'
+
+      sign_in @user 
+
+      redirect_to users_email_path and return 
+
+
     end
     #current_user.authentications.find_or_create_by_provider_and_uid(auth['provider'], auth['uid'])
     flash[:notice] = "Authentication Successful"
     redirect_to users_videos_path  
   end
 
-  # PUT /authentications/1
+  # PUT /authentications/
   # PUT /authentications/1.json
   def update
     @authentication = Authentication.find(params[:id])

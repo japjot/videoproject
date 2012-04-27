@@ -1,0 +1,20 @@
+<%= form_for(@waiting_list, :html => { :class => "well form-inline" }) do |f| %>
+  <% if @waiting_list.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@waiting_list.errors.count, "error") %> prohibited this waiting_list from being saved:</h2>
+
+      <ul>
+      <% @waiting_list.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+
+    <%= f.text_field :email, :class => 'input-small', :placeholder => 'Email' %>
+    <%= f.submit "Join Waiting List", :class => 'btn' %>
+
+
+<% end %>
