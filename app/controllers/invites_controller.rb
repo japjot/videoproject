@@ -43,7 +43,7 @@ class InvitesController < ApplicationController
     @invite_subject = 'Want an invite for Gloopt?'
     @invite_body = 'Hey ' + @friend.first_name + ', I just got a few invitations and I thought you might want one.  
 
-Just visit http://gloopt.com/beta    
+Just visit '+beta_url+'    
 
 Best,  
 

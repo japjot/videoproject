@@ -2,7 +2,7 @@ class WaitingListsController < ApplicationController
   # GET /waiting_lists
   # GET /waiting_lists.json
   def index
-    @waiting_lists = WaitingList.all
+    @waiting_lists = WaitingList.find_all_by_email_sent(false)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -45,7 +45,7 @@ class WaitingListsController < ApplicationController
     respond_to do |format|
       if @waiting_list.save
         UserMailer.add_to_waitlist(@waiting_list).deliver
-        format.html { render action: "index", notice: 'Waiting list was successfully created.' }
+        format.html { redirect_to @waiting_list, notice: 'Waiting list was successfully created.' }
         format.json { render json: @waiting_list, status: :created, location: @waiting_list }
       else
         format.html { render action: "new" }
@@ -58,10 +58,13 @@ class WaitingListsController < ApplicationController
   # PUT /waiting_lists/1.json
   def update
     @waiting_list = WaitingList.find(params[:id])
+    UserMailer.add_to_beta(@waiting_list).deliver
+    @waiting_list.set_email_sent_at_to_now
+    @waiting_list.set_email_sent_to_true
 
     respond_to do |format|
-      if @waiting_list.update_attributes(params[:waiting_list])
-        format.html { redirect_to @waiting_list, notice: 'Waiting list was successfully updated.' }
+      if @waiting_list.save
+        format.html { redirect_to waiting_lists_url, notice: 'Successfully sent the last email.  ' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

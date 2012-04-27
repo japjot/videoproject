@@ -10,16 +10,20 @@
             <%= link_to "View Details", video_path(video.id), :class => "btn" %>
             <% if current_user %>     
                 <span class="vote_tally"><%= video.votes_for %> </span> | <%= link_to( (image_tag "thumbs_up.png", :height => 25, :width => 25, :class => 'ratelink', :theid => video.id), vote_up_video_path(video), :method => :post) %> 
-                <span class="social_icons">
-                    <%= link_to (image_tag 'social_icons/facebook.png'), "http://www.facebook.com/sharer.php?u=#{video_url(video.id)}&t=Check out this video on Gloopt:#{video.name}" %> 
-                    <%= link_to ( image_tag 'social_icons/twitter.png' ), "http://twitter.com/home?status=Check out this video on Gloopt:#{video.name} #{video_url(video.id)}" %> 
-                    <%= link_to (image_tag 'social_icons/linkedin.png' ), "http://www.linkedin.com/shareArticle?mini=true&url=#{video_url(video.id)}&title=Check out this video on Gloopt:#{video.name}&source=#{video_url(video.id)}" %> 
-
-                    <%= link_to (image_tag 'social_icons/email.png'), "mailto:?subject=Check out this Gloopt Video: #{video.name}&body=I thought you'd want to check this out.  #{video_url(video.id)}"   %> 
-                </span> 
-            <% else %> 
-                You must <%= link_to 'join', '#' %> or <%= link_to 'login', '#' %> to vote or comment
             <% end %> 
+            <span class="social_icons">
+                <%= link_to (image_tag 'social_icons/facebook.png'), "http://www.facebook.com/sharer.php?u=#{video_url(video.id)}&t=Check out this video on Gloopt:#{video.name}" %> 
+                <%= link_to ( image_tag 'social_icons/twitter.png' ), "http://twitter.com/home?status=Check out this video on Gloopt:#{video.name} #{video_url(video.id)}" %> 
+                <%= link_to (image_tag 'social_icons/linkedin.png' ), "http://www.linkedin.com/shareArticle?mini=true&url=#{video_url(video.id)}&title=Check out this video on Gloopt:#{video.name}&source=#{video_url(video.id)}" %> 
+
+                <%= link_to (image_tag 'social_icons/email.png'), "mailto:?subject=Check out this Gloopt Video: #{video.name}&body=I thought you'd want to check this out.  #{video_url(video.id)}"   %> 
+            </span> 
+            <% if !current_user %> 
+                <div style="clear:both;">
+                    You must <%= link_to 'join', '/auth/linkedin' %> or <%= link_to 'login', '/auth/linkedin' %> to vote or comment
+                </div> 
+            <% end %> 
+
         </p> 
 
         </div><!--/span4-->

@@ -1,6 +1,38 @@
-<h1>Thank you for joining the waiting list! </h1>
+<p id="notice"><%= notice %></p>
 
-<h1> We will send you an email when we are ready to invite you!</h1>
+<h1>Listing waiting_lists</h1>
+
+<table class="table table-bordered">  
+	<tr>
+  	<th>Email</th>
+    <th>Invite User</th>
+  </tr>
+
+<% @waiting_lists.each do |waiting_list| %>
+  <tr>
+  	<td><%= waiting_list.email %> </td>
+    <td>
+
+			<%= form_for waiting_list do |f| %>
+			  <% if waiting_list.errors.any? %>
+			    <div id="error_explanation">
+			      <h2><%= pluralize(waiting_list.errors.count, "error") %> prohibited this waiting_list from being saved:</h2>
+
+			      <ul>
+			      <% waiting_list.errors.full_messages.each do |msg| %>
+			        <li><%= msg %></li>
+			      <% end %>
+			      </ul>
+			    </div>
+			  <% end %>
+	    <%= f.hidden_field :email, :class => 'input-xlarge', :placeholder => 'Email' %>
+	    <%= f.submit "Join Waiting List", :class => 'btn' %>
+
+			<% end %> 
+
+    </td>
+  </tr>
+<% end %>
+</table>
 
 <br />
-
