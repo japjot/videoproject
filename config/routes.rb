@@ -8,7 +8,7 @@ Videoapp::Application.routes.draw do
   match 'auth/:provider/callback' => 'authentications#create'
   match 'users/email' => 'users#email', :as => :user
   put 'users/update_email'
-
+  post 'videos/comment'
 
   resources :authentications  
 
@@ -17,6 +17,7 @@ Videoapp::Application.routes.draw do
       post :vote_up
     end
   end 
+
 
   match '/beta' => 'videos#index'
 

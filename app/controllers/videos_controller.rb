@@ -39,6 +39,8 @@ class VideosController < ApplicationController
     @yt_client = YouTubeIt::Client.new(:dev_key => "AI39si6hkRNCL77mzzv1LycIohZtksVIi0L5S9lQMx6crqOfGdyKcB2U2M5WHeNBUT2VLgTVzjR9rxPa1RJZw-sZ6wqtnaZ7AA")
     @video = Video.find(params[:id])
 
+    @comments = @video.comments.all
+
 
     respond_to do |format|
       format.html # show.html.erb
@@ -138,6 +140,14 @@ class VideosController < ApplicationController
 #      redirect_to root_path       
       render :nothing => true, :status => 404
     end
+  end
+
+  def comment
+    ##need to add ajax for this and to change the number next to the vote. 
+    @video = Video.find(params[:commentable][:commentable_id])
+
+    @video.comments.create(:title => params[:comment][:title], :comment => params[:comment][:comment], :user_id => current_user)
+    redirect_to @video
 
   end
 
