@@ -13,15 +13,15 @@
 
   <div class="field">
     <%= f.label :name %><br />
-    <%= f.text_field :name %>
+    <%= f.text_field :name, :rows => '3', :class => 'input-xlarge' %>
   </div>
   <div class="field">
     <%= f.label :summary %><br />
-    <%= f.text_area :summary %>
+    <%= f.text_area :summary, :rows => '3', :class => 'input-xlarge' %>
   </div>
   <div class="field">
     YouTube URL <br />
-    <%= f.text_area :url %>
+    <%= f.text_field :url, :class => 'input-xlarge' %>
   </div>
   <div class="actions">
     <%= f.submit %>
