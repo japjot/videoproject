@@ -4,11 +4,13 @@ Videoapp::Application.routes.draw do
 
   resources :invites
   match '/users/videos' => 'videos#show_user_videos'
-  match 'invites/new/:linkedin_id' => 'invites#new'
+  match 'invites/new/' => 'invites#new'
   match 'auth/:provider/callback' => 'authentications#create'
   match 'users/email' => 'users#email', :as => :user
   put 'users/update_email'
   post 'videos/comment'
+
+  post 'invites/create_invite_list'
 
   resources :authentications  
 

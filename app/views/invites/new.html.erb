@@ -1,8 +1,13 @@
-<h1>Send Invite</h1>
+<%# debug @linkedin_users %> 
 
+<%# debug params %> 
 
-<p>Send invitation for <%= name_and_headline(@friend) %> </p>
+<h1>Sending Invitations To </h1>
+
+<% @linkedin_users.each { |lu|  %> 
+	<p><%= name_and_headline(lu[1]) %> </p>
+<% } %> 
+
 
 <%= render 'form' %>
 
-<%= link_to 'Back', invites_path %>

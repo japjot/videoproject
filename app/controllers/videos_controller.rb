@@ -28,7 +28,7 @@ class VideosController < ApplicationController
       end
 
     else 
-      redirect_to root_path
+      redirect_to beta_path
     end
 
   end 
@@ -155,7 +155,7 @@ class VideosController < ApplicationController
 
   private
     def user_signed_in
-      redirect_to root_path if !user_signed_in?
+      redirect_to beta_path if !user_signed_in?
     end
 
 

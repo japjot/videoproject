@@ -25,7 +25,7 @@
               <li><%= link_to "Invites Left: "+ current_user.invites_left.to_s, invites_path %></li>
               <li><%=  link_to 'Waiting List Admin Panel', waiting_lists_path  if current_user.is_admin %> </li>
             <% else %> 
-              <li><%= link_to "Home", root_path  %></li>
+              <li><%= link_to "Home", beta_path  %></li>
             <% end %> 
           </ul>
           <ul class="nav pull-right">
@@ -39,7 +39,7 @@
                 <ul class="dropdown-menu">
                   <li>
                     <a href="/auth/linkedin" class="auth_provider">
-                      <%= image_tag "linkedin_signin.png",  :alt => "Linkedin" %>
+                      <%= image_tag "linkedin_signin.png",  :alt => "Linkedin", :width => 200 %>
                     </a>
                   </li> 
                 </ul>

@@ -11,9 +11,12 @@
     </div>
   <% end %>
 
-    <%= f.hidden_field :first_name, :value => @friend.first_name  %>
-    <%= f.hidden_field :last_name, :value => @friend.last_name %>
-    <%= f.hidden_field :linkedin_id, :value => params[:linkedin_id] %>
+    <%# f.hidden_field :first_name, :value => @friend.first_name  %>
+    <%# f.hidden_field :last_name, :value => @friend.last_name %>
+    <%# f.hidden_field :linkedin_id, :value => params[:linkedin_id] %>
+    <% @linkedin_users.each_with_index.map { |lu, index|  %> 
+      <%= f.hidden_field 'linkedin_id['+index.to_s+']', :value => lu[0] %>
+    <% } %> 
 
   <div class="field">
     <%= f.label :subject %><br />
@@ -24,6 +27,6 @@
     <%= f.text_area :body, :value => @invite_body, :rows => '10', :class => 'input-xlarge'  %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Send Invites" %>
   </div>
 <% end %>

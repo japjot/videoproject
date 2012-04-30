@@ -7,7 +7,10 @@ LinkedIn.configure do |config|
   config.secret = "pJE2HjkKbmDyWE9o"
 end
 
-LinkedIn::Client.class_eval do
+LinkedIn::Client.class_eval TESTS = 10_000
+Benchmark.bmbm do |results|
+  
+end
 # options should be a hash like this:
 # options = {:recipients => {:values => [:person => {:_path => "/people/~" }, :person =>   {:_path => "/people/USER_ID"} ]}, :subject => "Something",:body => "To read" }
   def send_message(options)

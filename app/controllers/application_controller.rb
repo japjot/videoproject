@@ -15,4 +15,8 @@ class ApplicationController < ActionController::Base
 	  redirect_to :action => "show", :id => params[:id] 
 	end    
 
+  def after_sign_out_path_for(users)
+    beta_path
+  end	
+
 end
