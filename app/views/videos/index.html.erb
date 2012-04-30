@@ -2,7 +2,7 @@
 
 
     <% @videos.each do |video| %>
-        <div class="span4">
+        <div class="span4 item">
         <h2><%= video.name %> </h2>
 
         <p><%= show_video(@yt_client, video) %>  </p>

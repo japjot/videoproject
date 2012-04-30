@@ -1,11 +1,11 @@
 <div>
-  <%= link_to 'Create New Video', new_video_path, :class => 'btn' %>
+  <%= link_to 'Create New Video', new_video_path, :class => 'btn' unless @videos.count > 0 %>
 </div> 
 <h1>Listing videos</h1>
 
 
     <% @videos.each do |video| %>
-      <div class="span4">
+      <div class="span4 item">
         <h2><%= video.name %> <%= link_to '(Edit)', edit_video_path(video) %> <%= link_to '(Delete)', video, confirm: 'Are you sure?', method: :delete %> </h2>
         <p><%= show_video(@yt_client, video) %>  </p>
       </div><!--/span4-->
@@ -13,5 +13,5 @@
 
 <div style="clear:both;"></div>
 <div>
-<%= link_to 'Create New Video', new_video_path, :class => 'btn' %>
+<%= link_to 'Create New Video', new_video_path, :class => 'btn' unless @videos.count > 0 %>
 </div> 
