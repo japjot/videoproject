@@ -128,7 +128,8 @@ Best,
 
       @user = current_user
       @invites_left = @user.invites_left 
-      @user.invites_left = @invites_left -1 
+      @user.invites_left = @invites_left - params[:invite][:linkedin_id].count
+      @user.invites_left = 0 if @user.invites_left < 0 
       @user.save(:validate => false) 
 
 
