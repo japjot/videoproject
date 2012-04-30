@@ -38,10 +38,10 @@ Best,
     respond_to do |format|
       if true ##and video is over 60 seconds in duration 
         format.html { render 'new', notice: 'Video was successfully created.' }
-        format.json { render json: @video, status: :created, location: @video }
+#        format.json { render json: @video, status: :created, location: @video }
       else
-        format.html { render action: "new" }
-        format.json { render json: @video.errors, status: :unprocessable_entity }
+#        format.html { render action: "new" }
+#        format.json { render json: @video.errors, status: :unprocessable_entity }
       end
     end
   end
