@@ -127,10 +127,13 @@ Best,
     }
 
       @user = current_user
+      puts 'NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN'
+      puts @user.invites_left
       @invites_left = @user.invites_left 
       @user.invites_left = @invites_left -1 
       @user.save 
-
+      puts 'MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM'
+      puts @user.invites_left
 
 
     respond_to do |format|
