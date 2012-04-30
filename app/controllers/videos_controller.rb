@@ -146,7 +146,7 @@ class VideosController < ApplicationController
     ##need to add ajax for this and to change the number next to the vote. 
     @video = Video.find(params[:commentable][:commentable_id])
 
-    @video.comments.create(:title => params[:comment][:title], :comment => params[:comment][:comment], :user_id => current_user)
+    @video.comments.create(:title => params[:comment][:title], :comment => params[:comment][:comment], :user_id => current_user.id)
     redirect_to @video
 
   end

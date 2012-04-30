@@ -1,6 +1,6 @@
 <% @comments.each do |comment| %> 
-    <h3> <%= comment.title %> </h3>
-    <p> <%= comment.comment %> </p>
+	<i> <%= comment.user.first_name + " " + comment.user.last_name + "  says" if comment.user %> </i><br />
+  <p> <%= comment.comment %> </p><br />
 <% end %> 
 
 <%= form_tag :action => 'comment' do  %>
