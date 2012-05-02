@@ -50,6 +50,9 @@ class AuthenticationsController < ApplicationController
       @authentication.secret = auth['credentials']['secret']
       @authentication.save
       sign_in @authentication.user 
+      flash[:notice] = "Authentication Successful"
+      redirect_to users_videos_path  
+
     else #if first time user. 
       @user = User.new(:first_name => auth['info']['first_name'], :last_name => auth['info']['last_name'], :invites_left => 3)
       @user.save(:validate => false) 
@@ -59,13 +62,12 @@ class AuthenticationsController < ApplicationController
 
       sign_in @user 
 
-      redirect_to users_email_path and return 
-
+      respond_to do |format|
+        format.html { redirect_to users_email_path, notice: '' }
+      end 
 
     end
     #current_user.authentications.find_or_create_by_provider_and_uid(auth['provider'], auth['uid'])
-    flash[:notice] = "Authentication Successful"
-    redirect_to users_videos_path  
   end
 
   # PUT /authentications/
