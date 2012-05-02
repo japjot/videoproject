@@ -31,7 +31,7 @@
               <% follow_video_text = "Videos Followed" %> 
               <% follow_video_text += " ("+update_count.to_s+" new)" if (update_count > 0 ) %>
 
-              <li><%= link_to follow_video_text, videos_following_path %></li>
+              <li><%= link_to follow_video_text, videos_following_path unless (current_user.follow_count == 0) %></li>
               <li><%= link_to "Invites Left: "+ current_user.invites_left.to_s, invites_path %></li>
               <li><%=  link_to 'Waiting List Admin Panel', waiting_lists_path  if current_user.is_admin %> </li>
             <% else %> 
