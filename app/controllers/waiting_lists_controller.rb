@@ -45,8 +45,8 @@ class WaitingListsController < ApplicationController
     respond_to do |format|
       if @waiting_list.save
         UserMailer.add_to_waitlist(@waiting_list).deliver
-        format.html { redirect_to waiting_lists_path, notice: 'Waiting list was successfully created.' }
-#        format.json { render json: @waiting_list, status: :created, location: @waiting_list }
+        format.html { redirect_to @waiting_list, notice: 'Waiting list was successfully created.' }
+        format.json { render json: @waiting_list, status: :created, location: @waiting_list }
       else
         format.html { render action: "new" }
         format.json { render json: @waiting_list.errors, status: :unprocessable_entity }
@@ -64,7 +64,7 @@ class WaitingListsController < ApplicationController
 
     respond_to do |format|
       if @waiting_list.save
-        format.html { redirect_to waiting_lists_url, notice: 'Successfully sent the last email.  ' }
+        format.html { redirect_to waiting_lists_path, notice: 'Successfully sent the last email.  ' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
