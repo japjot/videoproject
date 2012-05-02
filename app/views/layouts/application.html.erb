@@ -45,6 +45,11 @@
               <li> <span class="text-on-navbar">Signed in as <%= current_user.full_name %>. Not you? </span> </li>
               <li> <%= link_to "Sign out", destroy_user_session_path, :method => :delete %> </li>
             <% else %>
+              <li>
+                <a href="/auth/linkedin" class="auth_provider" style="padding:0px;">
+                  <%= image_tag "linkedin_signup_button.png",  :alt => "Linkedin", :width => 100, :style => "margin-top:2px;  margin-right:20px;" %>
+                </a>
+              </li>
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Sign In <b class="caret"></b>
                 </a>
