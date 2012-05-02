@@ -19,12 +19,12 @@
                     <% if !current_user.following?(video.user) # should put this in a helper variable later %> 
                         <%= form_tag({:controller => "users", :action => "follow_user"}, :method => "post", :class => "follow_form") do %> 
                             <%= hidden_field "user", "user_id", :value => video.user.id %> 
-                            <%= submit_tag 'Follow', :class => 'btn btn-success' %> 
+                            <%= submit_tag 'Follow', :class => 'follow btn btn-success' %> 
                         <% end %> 
                     <% else %> 
                         <%= form_tag({:controller => "users", :action => "unfollow_user"}, :method => "post", :class => "unfollow_form") do %> 
                             <%= hidden_field "user", "user_id", :value => video.user.id %> 
-                            <%= submit_tag 'Unfollow', :class => 'btn btn-danger' %> 
+                            <%= submit_tag 'Unfollow', :class => 'unfollow btn btn-danger' %> 
                          <% end %> 
                     <% end %> 
                 <% end %> 

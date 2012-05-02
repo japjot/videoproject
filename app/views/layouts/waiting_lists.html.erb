@@ -37,6 +37,14 @@
             <% else %> 
             <% end %> 
           </ul>
+
+          <% if user_signed_in? %>
+            <ul class="nav pull-right">
+              <li> <span class="text-on-navbar">Signed in as <%= current_user.full_name %>. Not you? </span> </li>
+              <li> <%= link_to "Sign out", destroy_user_session_path, :method => :delete %> </li>
+            </ul>
+          <% end %>
+          
         </div><!--/.nav-collapse -->
       </div>
     </div>

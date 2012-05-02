@@ -13,3 +13,37 @@ $ ->
       success: (output) ->
         clicked_link.parent().parent().find(".vote_tally").empty().append output
     false
+
+
+$ ->
+  $(".follow").live "click", ->
+    user_id = $(this).prev().attr("value")
+    this_button = $(this)
+    $.ajax
+      data:
+        "user[user_id]": user_id
+
+      type: "POST"
+      url: "/users/follow_user"
+      dataType: "text"
+      success: (output) ->
+        this_button.attr "class", "unfollow btn btn-danger"
+        this_button.attr "value", "Unfollow"
+
+    false
+
+$ ->
+  $(".unfollow").live "click", ->
+    user_id = $(this).prev().attr("value")
+    this_button = $(this)
+    $.ajax
+      data:
+        "user[user_id]": user_id
+
+      type: "POST"
+      url: "/users/unfollow_user"
+      dataType: "text"
+      success: (output) ->
+        this_button.attr "class", "follow btn btn-success"
+        this_button.attr "value", "Follow"
+    false

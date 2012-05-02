@@ -42,7 +42,7 @@ class UsersController < ApplicationController
   # POST /users.json
   def create
     @user = User.new(params[:user])
-
+    @user.last_checked_followers = DateTime.current 
 
     respond_to do |format|
       if @user.save ##and user is over 60 seconds in duration 
