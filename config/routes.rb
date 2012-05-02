@@ -13,6 +13,7 @@ Videoapp::Application.routes.draw do
   post 'users/unfollow_user'
   post 'invites/create_invite_list'
   get 'videos/following'
+  get 'users/about'
 
   resources :authentications  
 
@@ -22,7 +23,7 @@ Videoapp::Application.routes.draw do
     end
   end 
 
-  
+
   match '/beta' => 'videos#index'
 
   devise_for :users

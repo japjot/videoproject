@@ -80,6 +80,10 @@ class UsersController < ApplicationController
     redirect_to beta_path  
   end 
 
+  def about
+    render 'about'
+  end 
+
 
   def unfollow_user 
     @current_user = current_user 

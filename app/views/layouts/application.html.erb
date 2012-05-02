@@ -38,6 +38,8 @@
               <li><%= link_to "Invites Left: "+ current_user.invites_left.to_s, invites_path %></li>
               <li><%=  link_to 'Waiting List Admin Panel', waiting_lists_path  if current_user.is_admin %> </li>
             <% else %> 
+              <li><%= link_to "Home", beta_path %></li>
+              <li><%= link_to "About", users_about_path %></li>
             <% end %> 
           </ul>
           <ul class="nav pull-right">
