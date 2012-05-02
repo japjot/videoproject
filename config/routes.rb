@@ -1,5 +1,9 @@
 Videoapp::Application.routes.draw do
 
+  ActiveAdmin.routes(self)
+
+  devise_for :admin_users, ActiveAdmin::Devise.config
+
   resources :waiting_lists
 
   resources :invites

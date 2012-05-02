@@ -35,6 +35,7 @@ gem 'youtube_it'
 gem 'thumbs_up'
 gem 'acts_as_commentable'
 gem 'acts_as_follower'
+gem 'activeadmin'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
