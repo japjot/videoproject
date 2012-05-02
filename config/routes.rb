@@ -10,7 +10,8 @@ Videoapp::Application.routes.draw do
   match '/users/videos' => 'videos#show_user_videos'
   match 'invites/new/' => 'invites#new'
   match 'auth/:provider/callback' => 'authentications#create'
-  match 'users/email' => 'users#email', :as => :user
+  #match 'users/email' => 'users#email', :as => :user
+  match 'users/email'
   put 'users/update_email'
   post 'videos/comment'
   post 'users/follow_user'
