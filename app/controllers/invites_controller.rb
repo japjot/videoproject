@@ -4,46 +4,51 @@ class InvitesController < ApplicationController
 
 
   def create_invite_list 
+    if !params['invites'].nil?
+      ##check that total number of invites is less than invites left.  If not reload page with error message.  
+      @video=Video.find 1 
 
-    ##check that total number of invites is less than invites left.  If not reload page with error message.  
-    @video=Video.find 1 
+      @invite = Invite.new 
 
-    @invite = Invite.new 
+      @invited_users = params['invites']
 
-    @invited_users = params['invites']
+      @li_client = LinkedIn::Client.new
+      @li_client.authorize_from_access(current_user.authentications.first.token, current_user.authentications.first.secret)
 
-    @li_client = LinkedIn::Client.new
-    @li_client.authorize_from_access(current_user.authentications.first.token, current_user.authentications.first.secret)
+      
+      @linkedin_users = Hash.new 
 
-    
-    @linkedin_users = Hash.new 
+      @invited_users.each do |key,iu| 
+        @linkedin_users[key] = @li_client.profile(:id => key)
+      end 
 
-    @invited_users.each do |key,iu| 
-      @linkedin_users[key] = @li_client.profile(:id => key)
-    end 
+      @invite_subject = 'Want an invite for Gloopt?'
+      @invite_body = 'Hey, 
 
-    @invite_subject = 'Want an invite for Gloopt?'
-    @invite_body = 'Hey, 
+  I just got a few invitations and I thought you might want one.  
 
-I just got a few invitations and I thought you might want one.  
+  Just visit '+beta_url+'    
 
-Just visit '+beta_url+'    
+  Best,  
 
-Best,  
-
-' + current_user.first_name 
+  ' + current_user.first_name 
 
 
 
-    respond_to do |format|
-      if true ##and video is over 60 seconds in duration 
-        format.html { render 'new', notice: 'Video was successfully created.' }
-#        format.json { render json: @video, status: :created, location: @video }
-      else
-#        format.html { render action: "new" }
-#        format.json { render json: @video.errors, status: :unprocessable_entity }
+      respond_to do |format|
+        if true ##and video is over 60 seconds in duration 
+          format.html { render 'new', notice: 'Video was successfully created.' }
+  #        format.json { render json: @video, status: :created, location: @video }
+        else
+  #        format.html { render action: "new" }
+  #        format.json { render json: @video.errors, status: :unprocessable_entity }
+        end
       end
-    end
+    else
+      respond_to do |format|
+        format.html { redirect_to invites_path, notice: 'You forgot to invite people to join.'}
+      end 
+    end 
   end
 
 
