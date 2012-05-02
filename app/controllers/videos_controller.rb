@@ -3,6 +3,20 @@ class VideosController < ApplicationController
 
   before_filter :user_signed_in, :only => [:create, :edit, :new, :show_user_videos]
 
+  def following
+    @videos = []
+
+    current_user.all_following.each  { |cu|
+      @videos << cu.videos.first 
+    } 
+
+    current_user.last_checked_followers = DateTime.current
+    current_user.save 
+
+    render 'index'
+  end
+
+
   # GET /videos
   # GET /videos.json
   def index
@@ -142,6 +156,7 @@ class VideosController < ApplicationController
     end
   end
 
+
   def comment
     ##need to add ajax for this and to change the number next to the vote. 
     @video = Video.find(params[:commentable][:commentable_id])
@@ -160,3 +175,4 @@ class VideosController < ApplicationController
 
 
 end
+

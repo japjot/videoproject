@@ -71,6 +71,26 @@ class UsersController < ApplicationController
     end
   end
 
+  def follow_user 
+    @current_user = current_user 
+    @followed_user = User.find params[:user][:user_id] 
+
+    current_user.follow(@followed_user)
+
+    redirect_to beta_path  
+  end 
+
+
+  def unfollow_user 
+    @current_user = current_user 
+    @unfollowed_user = User.find params[:user][:user_id] 
+
+    current_user.stop_following(@unfollowed_user)
+
+
+    redirect_to beta_path
+  end
+
   private
     def user_not_signed_in
       redirect_to users_videos_path if user_signed_in?

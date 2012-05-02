@@ -9,8 +9,10 @@ Videoapp::Application.routes.draw do
   match 'users/email' => 'users#email', :as => :user
   put 'users/update_email'
   post 'videos/comment'
-
+  post 'users/follow_user'
+  post 'users/unfollow_user'
   post 'invites/create_invite_list'
+  get 'videos/following'
 
   resources :authentications  
 
@@ -20,7 +22,7 @@ Videoapp::Application.routes.draw do
     end
   end 
 
-
+  
   match '/beta' => 'videos#index'
 
   devise_for :users

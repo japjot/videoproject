@@ -1,5 +1,5 @@
 class UserMailer < ActionMailer::Base
-  default from: "japjot@gloopt.com"
+  default from: "info@gloopt.com"
 
   def add_to_waitlist(waiting_list)
   	@waiting_list = waiting_list 
