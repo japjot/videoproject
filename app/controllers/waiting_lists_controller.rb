@@ -58,6 +58,9 @@ class WaitingListsController < ApplicationController
   # PUT /waiting_lists/1.json
   def update
     @waiting_list = WaitingList.find(params[:id])
+    puts "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM"
+    puts @waiting_list.id 
+    puts "DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD"
     UserMailer.add_to_beta(@waiting_list).deliver
     @waiting_list.set_email_sent_at_to_now
     @waiting_list.set_email_sent_to_true

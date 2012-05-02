@@ -8,7 +8,7 @@ class UserMailer < ActionMailer::Base
 
   def add_to_beta(waiting_list)
   	@waiting_list = waiting_list 
-  	mail(:to => @waiting_list.email, :subject => "Gloopt is ready for you",)
+  	mail(:to => @waiting_list.email, :subject => "Gloopt is ready for you" )
 	end 
 
 
