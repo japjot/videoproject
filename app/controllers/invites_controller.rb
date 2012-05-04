@@ -23,15 +23,15 @@ class InvitesController < ApplicationController
       end 
 
       @invite_subject = 'Want an invite for Gloopt?'
-      @invite_body = 'Hey, 
+      @invite_body = 'Hey,
 
-  I just got a few invitations and I thought you might want one.  
+I just got a few invitations and I thought you might want one.  
 
-  Just visit '+beta_url+'    
+Just visit '+beta_url+'    
 
-  Best,  
+Best,  
 
-  ' + current_user.first_name 
+' + current_user.first_name 
 
 
 
