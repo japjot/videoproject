@@ -27,6 +27,7 @@
     <%= f.text_area :body, :value => @invite_body, :rows => '10', :class => 'input-xlarge'  %>
   </div>
   <div class="actions">
-    <%= f.submit "Send Invites" %>
+    <%= f.submit "Send Invites", :class => 'invite-submit' %>
   </div>
+  <div id="form_errors"></div>
 <% end %>
