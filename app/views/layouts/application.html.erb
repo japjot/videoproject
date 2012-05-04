@@ -6,8 +6,6 @@
   <%= csrf_meta_tags %>
   <link rel="shortcut icon" type="image/png" href="favicon.ico" />
   <script type="text/javascript">var switchTo5x=true;</script>
-  <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
-  <script type="text/javascript">stLight.options({publisher: "6c2cb2d7-cec3-42f7-8471-149a87da26e8"}); </script>
 </head>
 <body>
 
@@ -82,5 +80,18 @@
   </div>
 
   <%= javascript_include_tag "application" %>
+  <script>
+$(document).ready(function() {
+  $(function(){
+    
+    $('#video-container').masonry({
+      itemSelector: '.item',
+      columnWidth: 150
+    });
+    
+  });
+});
+  </script>     
+
 </body>
 </html>
