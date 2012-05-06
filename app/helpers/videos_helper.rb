@@ -1,10 +1,10 @@
 module VideosHelper
 
 	def show_video(yt_client, video)
-		@embed_video = '<object width="260" height="164">'
+		@embed_video = '<object width="180" height="101">'
 		@embed_video = @embed_video + '<param value="http://www.youtube.com/v/'+video.youtube_id+'&feature=youtube_gdata_player" name="movie">'
 		@embed_video = @embed_video + '<param value="transparent" name="wode">'
-		@embed_video = @embed_video + '<embed width="260" height="164" wmode="transparent" type="application/x-shockwave-flash" src="http://www.youtube.com/v/'+video.youtube_id+'&feature=youtube_gdata_player">'
+		@embed_video = @embed_video + '<embed width="175" height="101" wmode="transparent" type="application/x-shockwave-flash" src="http://www.youtube.com/v/'+video.youtube_id+'&feature=youtube_gdata_player">'
 		@embed_video = @embed_video + '</object>'
 		return @embed_video.html_safe 
 	end 
