@@ -84,20 +84,36 @@ class VideosController < ApplicationController
   def create
     @video = current_user.videos.build(params[:video])
 
-    @video.save(:validate => false) 
+    @url = params[:video][:url]
 
 
     require 'uri'
 
-    query_string = URI.parse(@video.url).query
-    parameters = Hash[URI.decode_www_form(query_string)]
-    puts parameters['v'] # => aNdMiIAlK0g
 
+    if(@url.downcase.include? 'youtube.com')
+      ##create ways to catch if user is using 
+      query_string = URI.parse(params[:video][:url]).query
+      parameters = Hash[URI.decode_www_form(query_string)]
+      puts parameters['v'] # => aNdMiIAlK0g
+      video_id = parameters['v']
+    elsif (@url.downcase.include? 'y2u.be')
+      puts video_id = @url.match(/\.be\/(.+)$/)[1]
+      @url = 'http://www.youtube.com/watch?v='+video_id
+      @video.url = @url 
+    elsif (@url.downcase.include? 'youtu.be')
+      puts video_id = @url.match(/\.be\/(.+)$/)[1]
+      @url = 'http://www.youtube.com/watch?v='+video_id
+      @video.url = @url
+    end
+      
+      
 
     @yt_client = YouTubeIt::Client.new(:dev_key => "AI39si6hkRNCL77mzzv1LycIohZtksVIi0L5S9lQMx6crqOfGdyKcB2U2M5WHeNBUT2VLgTVzjR9rxPa1RJZw-sZ6wqtnaZ7AA")
-    @video.youtube_id = parameters['v'] # => aNdMiIAlK0g
+    @video.youtube_id = video_id # => aNdMiIAlK0g
 
-    this_video = @yt_client.video_by(@video.youtube_id)
+    this_video = @yt_client.video_by(video_id)
+
+
     @video.duration = this_video.duration 
 
 
@@ -116,7 +132,45 @@ class VideosController < ApplicationController
   # PUT /videos/1
   # PUT /videos/1.json
   def update
+
+
     @video = Video.find(params[:id])
+
+
+    @url = params[:video][:url]
+
+    require 'uri'
+
+
+    if(@url.downcase.include? 'youtube.com')
+      ##create ways to catch if user is using 
+      query_string = URI.parse(params[:video][:url]).query
+      parameters = Hash[URI.decode_www_form(query_string)]
+      puts parameters['v'] # => aNdMiIAlK0g
+      video_id = parameters['v']
+    elsif (@url.downcase.include? 'y2u.be')
+      puts video_id = @url.match(/\.be\/(.+)$/)[1]
+      @url = 'http://www.youtube.com/watch?v='+video_id
+      puts params[:video][:url] = @url 
+    elsif (@url.downcase.include? 'youtu.be')
+      puts video_id = @url.match(/\.be\/(.+)$/)[1]
+      @url = 'http://www.youtube.com/watch?v='+video_id
+      puts params[:video][:url] = @url
+    end
+      
+      
+
+    @yt_client = YouTubeIt::Client.new(:dev_key => "AI39si6hkRNCL77mzzv1LycIohZtksVIi0L5S9lQMx6crqOfGdyKcB2U2M5WHeNBUT2VLgTVzjR9rxPa1RJZw-sZ6wqtnaZ7AA")
+    @video.youtube_id = video_id # => aNdMiIAlK0g
+
+    this_video = @yt_client.video_by(video_id)
+
+
+    @video.duration = this_video.duration 
+
+
+
+
 
     respond_to do |format|
       if @video.update_attributes(params[:video])
