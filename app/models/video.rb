@@ -15,4 +15,8 @@ class Video < ActiveRecord::Base
 
 	belongs_to :user 
 
+	def show_image
+		return "<img src='http://img.youtube.com/vi/#{self.youtube_id}/1.jpg' width='180' height='80' />".html_safe
+	end 
+
 end

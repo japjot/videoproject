@@ -47,3 +47,5 @@ $ ->
         this_button.attr "class", "follow btn btn-success"
         this_button.attr "value", "Follow"
     false
+
+
