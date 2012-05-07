@@ -3,6 +3,9 @@
 <h1>Invite Your Linkedin Connections to Gloopt</h1>
 
 <% if current_user.invites_left > 0 %> 
+
+	<h3><%= link_to "Invite Friends By Email", new_email_invite_path %> </h3> 
+
 	<%= form_tag  :method => 'post', :action => 'create_invite_list' do %> 
 		<%= submit_tag 'Create Invite Message' %> 
 		<table class="table table-striped table-bordered table-condensed">

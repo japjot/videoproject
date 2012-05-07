@@ -1,0 +1,34 @@
+<%= form_for(@email_invite) do |f| %>
+  <% if @email_invite.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@email_invite.errors.count, "error") %> prohibited this email_invite from being saved:</h2>
+
+      <ul>
+      <% @email_invite.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label "Friend's Email" %><br />
+    <%= f.text_field :email %>
+  </div>
+
+
+  <div class="field">
+    <%= f.label :subject %><br />
+    <%= f.text_field :subject, :value => @invite_subject %>
+  </div>
+  <div class="field">
+    <%= f.label :body %><br />
+    <%= f.text_area :body, :value => @invite_body, :rows => '10', :class => 'input-xlarge'  %>
+  </div>
+
+
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

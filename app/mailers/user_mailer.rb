@@ -11,5 +11,11 @@ class UserMailer < ActionMailer::Base
   	mail(:to => @waiting_list.email, :subject => "Gloopt is ready for you" )
 	end 
 
+	def send_invitation(user, email_invite)
+		@email_invite = email_invite
+		@user = user
+		mail(:to => @email_invite.email, :from => @user.email, :subject => @email_invite.subject)
+	end 
+
 
 end

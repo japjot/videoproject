@@ -1,0 +1,29 @@
+<h1>Listing email_invites</h1>
+
+<table>
+  <tr>
+    <th>Email</th>
+    <th>Subject</th>
+    <th>Body</th>
+    <th>User</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @email_invites.each do |email_invite| %>
+  <tr>
+    <td><%= email_invite.email %></td>
+    <td><%= email_invite.subject %></td>
+    <td><%= email_invite.body %></td>
+    <td><%= email_invite.user_id %></td>
+    <td><%= link_to 'Show', email_invite %></td>
+    <td><%= link_to 'Edit', edit_email_invite_path(email_invite) %></td>
+    <td><%= link_to 'Destroy', email_invite, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Email invite', new_email_invite_path %>

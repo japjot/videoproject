@@ -9,6 +9,7 @@ class User < ActiveRecord::Base
   has_many :invites 
   has_many :videos, :dependent => :destroy 
   has_many :comments 
+  has_many :email_invites
 
   devise :invitable, :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable #, :validatable
