@@ -2,6 +2,7 @@
 
     <div id="video-container">
     <% @videos.each do |video| %>
+        <% if (video.id != 4 ) %> 
         <div class="span2 item">
         <h3><%= video.name %> </h3>
 
@@ -62,6 +63,7 @@
         </div> 
 
         </div><!--/span2-->
+        <% end %> <!-- video not equal 4 -->  
      <% end %>
 
 
