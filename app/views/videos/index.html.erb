@@ -2,7 +2,7 @@
 
     <div id="video-container">
     <% @videos.each do |video| %>
-        <% if (video.id != 4 ) %> 
+        <% if (video.youtube_id) %> 
         <div class="span2 item">
         <h3><%= video.name %> </h3>
 
