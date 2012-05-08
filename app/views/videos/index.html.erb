@@ -4,7 +4,7 @@
     <% @videos.each do |video| %>
         <% if (video.youtube_id) %> 
         <div class="span2 item">
-        <h3><%= video.name %> </h3>
+        <h4><%= video.name %> </h4>
 
         <div class="video-container" value="<%= video.id %>">
             <%= link_to video.show_image, video_path(video.id) %> 
@@ -46,6 +46,7 @@
                 <!-- AddThis Button BEGIN -->
                 <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid=xa-4fa0a2a1712a2534"></script>
                 <!-- AddThis Button END -->
+                <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js?pub=visualdxhealth"></script>
 
                 <a id="video-<%= video.id %>" style="text-decoration:none;" class="aboutthis_button btn btn-info">
                     Share Video
