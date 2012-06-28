@@ -17,7 +17,7 @@ class Video < ActiveRecord::Base
 
 	def self.search(search)
 		if search
-	    	find(:all, :conditions => ['name LIKE ? or summary LIKE ?', "%#{search}%", "%#{search}%" ])
+	    	find(:all, :conditions => ['name ILIKE ? or summary ILIKE ?', "%#{search}%", "%#{search}%" ])
 		else
 			find(:all)
 		end
