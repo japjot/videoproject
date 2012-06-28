@@ -1,5 +1,5 @@
 <div>
-  <%= link_to 'Create New Video', new_video_path, :class => 'btn' unless @videos.count > 0 %>
+  <%= link_to 'Create New Video', new_video_path, :class => 'btn' unless @videos.count > 25 %>
 </div> 
 <h1>Listing videos</h1>
 
@@ -13,5 +13,5 @@
 
 <div style="clear:both;"></div>
 <div>
-<%= link_to 'Create New Video', new_video_path, :class => 'btn' unless @videos.count > 0 %>
+<%= link_to 'Create New Video', new_video_path, :class => 'btn' unless @videos.count > 25 %>
 </div> 
