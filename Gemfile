@@ -36,9 +36,11 @@ gem 'thumbs_up'
 gem 'acts_as_commentable'
 gem 'acts_as_follower'
 #gem 'activeadmin'
-gem 'activeadmin', :git => 'git://github.com/gregbell/active_admin'
+
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
+
+gem 'sunspot_rails'
 
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'

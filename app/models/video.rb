@@ -15,6 +15,13 @@ class Video < ActiveRecord::Base
 
 	belongs_to :user 
 
+	def self.search(search)
+		if search
+	    	find(:all, :conditions => ['name LIKE ? OR summary LIKE ?', "%#{search}%", "%#{search}%" ])
+		else
+			find(:all)
+		end
+	end
 	def show_image
 		return "<img src='http://img.youtube.com/vi/#{self.youtube_id}/1.jpg' width='180' height='80' />".html_safe
 	end 

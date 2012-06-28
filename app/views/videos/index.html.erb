@@ -1,6 +1,17 @@
 <h1>The Best Startup Pitches on the Web</h1>
 
+    <%= form_tag videos_path, :method => "get" do %> 
+        <p>
+            <%= text_field_tag :search, params[:search] %> 
+            <%= submit_tag "Search", :name => nil %> 
+        </p>
+    <% end %> 
+
     <div id="video-container">
+    <% if (@videos.empty?)  %> 
+        <h1>Sorry, we couldn't find what you were looking for.</h1>
+    <% end %> 
+
     <% @videos.each do |video| %>
         <% if (video.youtube_id) %> 
         <div class="span2 item">
