@@ -20,6 +20,7 @@ class Video < ActiveRecord::Base
 	    	find(:all, :conditions => ['name ILIKE ? or summary ILIKE ?', "%#{search}%", "%#{search}%" ])
 		else
 			find(:all)
+			self.order("id DESC")
 		end
 	end
 	def show_image
