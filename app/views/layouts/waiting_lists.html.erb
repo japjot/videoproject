@@ -33,6 +33,9 @@
         <a class="brand" href="#">Gloopt</a>
         <div class="container-fluid nav-collapse">
           <ul class="nav">
+            <li style="margin-top: 5px; margin-right:10px; margin-left:-10px;">
+              <%= image_tag "camera.png",  :alt => "camera_logo", :style => "margin:top: 2px; float:left;" %>
+            </li>
             <% if user_signed_in? %>
               <% update_count = 0 %> 
               <% current_user.all_following.each  { |cu| %> 
