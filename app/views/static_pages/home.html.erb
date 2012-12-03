@@ -29,7 +29,7 @@
 </div>
 <div id="featured"> 
 
-<%= link_to @featured_video.show_image(110,70), @featured_video.url %><div class="f_title"><h1>Featured Video.<br /><br /><span class="subtitle"><%= @featured_video.name %>.</span></h1></div>
+<%= link_to @featured_video.show_image(110,70), @featured_video.url %><div class="f_title"><h1>Featured Video.<br /><br /><span class="subtitle"><%= @featured_video.featured_short_name %>.</span></h1></div>
 <!-- 
 	&nbsp; <span class="subtitle">Subtitle.</span> 
 -->
@@ -44,7 +44,7 @@
 	<ul>
 		<% @videos.each do |video| %>
 			<li>
-				<%= link_to video.show_image(140,80) + video.name, video.url %> 
+				<%= link_to video.show_image(140,80) + video.short_name, video.url %> 
 			</li>
 		<% end %>
 
