@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Gloopt.com </title>
+<%= stylesheet_link_tag    "main_files/style", :media => "all" %>
+<%= stylesheet_link_tag    "main_files/css", :media => "all" %>
+<%= stylesheet_link_tag    "reset", :media => "all" %>
+<%= stylesheet_link_tag    "all_users_main", :media => "all" %>
+</head>
+
+<body>
+
+<%= render 'wrap_and_header' %>
+
+<div id="content">
+
+<%= render 'home_navigation' %>
+
+
+<div id="right_col">
+<div id="smart">
+	<div class="get"></div>
+	<div class="blockwrap s"></div>
+    <div class="blockwrap m"></div>
+    <div class="blockwrap textblock"><h1>ONE MINUTE VIDEO</h1><p>for smart people</p></div>
+    <div class="blockwrap a"></div>
+    <div class="blockwrap r"></div>
+    <div class="blockwrap t"></div>
+</div>
+<div id="featured"> 
+
+<%= link_to @featured_video.show_image(110,70), @featured_video.url %><div class="f_title"><h1>Featured Video.<br /><br /><span class="subtitle"><%= @featured_video.name %>.</span></h1></div>
+<!-- 
+	&nbsp; <span class="subtitle">Subtitle.</span> 
+-->
+<p><%= @featured_video.home_page_featured_description %></p>
+</div>
+</div>
+
+</div>
+
+
+<div id="slider">
+	<ul>
+		<% @videos.each do |video| %>
+			<li>
+				<%= link_to video.show_image(140,80) + video.name, video.url %> 
+			</li>
+		<% end %>
+
+  </ul>
+<div class="arrow_left"><a href="#"><img src="assets/arrow_left.png" alt="Scroll left" height="20" width="12"></a></div><div class="arrow_right"><a href="#"><img src="assets/arrow_right.png" alt="Scroll right" height="20" width="12"></a></div>
+</div>
+
+<div class="hfooter">&nbsp;</div>
+</div>
+<div id="footer">
+	<div id="searchbar"></div>
+    <div class="footer_content"><p>© 2012 All rights reserved.  Gloopt.com</p></div>
+</div>
+
+
+</body></html>

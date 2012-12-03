@@ -17,5 +17,10 @@ class UserMailer < ActionMailer::Base
 		mail(:to => @email_invite.email, :from => @user.email, :subject => @email_invite.subject)
 	end 
 
+	def send_contact_email(contact)
+		@contact = contact 
+		@subject = 'Gloopt Contact Email-'+@contact.subject.to_s
+		mail(:to => "rcavezza@gmail.com", :from => @contact.email, :subject => @subject)
+	end
 
 end

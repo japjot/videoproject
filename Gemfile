@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+ruby '1.9.3'
 
 gem 'rails', '3.2.2'
 
@@ -51,3 +52,6 @@ gem 'activeadmin', :git => 'git://github.com/gregbell/active_admin'
 
 # To use debugger
 # gem 'ruby-debug19', :require => 'ruby-debug'
+
+gem 'execjs'
+gem 'therubyracer'

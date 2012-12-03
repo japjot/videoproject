@@ -15,6 +15,14 @@ class Video < ActiveRecord::Base
 
 	belongs_to :user 
 
+	def home_page_featured_description
+		return self.summary
+	end
+
+	def youtube_link
+		return self.url 
+	end
+
 	def self.search(search)
 		if search
 	    	find(:all, :conditions => ['name ILIKE ? or summary ILIKE ?', "%#{search}%", "%#{search}%" ])
@@ -23,8 +31,15 @@ class Video < ActiveRecord::Base
 			self.order("id DESC")
 		end
 	end
-	def show_image
-		return "<img src='http://img.youtube.com/vi/#{self.youtube_id}/1.jpg' width='180' height='80' />".html_safe
-	end 
+
+	def show_image(width = 180 , height = 80) 
+		v =  "<img src='http://img.youtube.com/vi/#{self.youtube_id}/1.jpg' width='"+ width.to_s + "' height='"+height.to_s+"' />"
+		return v.html_safe
+	end
+
+	# def show_image(width = 180 , height = 80) 
+	# 	return "<img src='http://img.youtube.com/vi/#{self.youtube_id}/1.jpg' width='"+ width.to_s + "' height='"+ height.to_s + "' />".html_safe
+	# end 
+
 
 end

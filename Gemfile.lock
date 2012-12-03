@@ -225,6 +225,7 @@ DEPENDENCIES
   coffee-rails (~> 3.2.1)
   devise
   devise_invitable (~> 1.0.0)
+  execjs
   jquery-rails
   linkedin
   omniauth
@@ -233,6 +234,7 @@ DEPENDENCIES
   rails (= 3.2.2)
   sass-rails (~> 3.2.3)
   sqlite3
+  therubyracer
   thumbs_up
   twitter-bootstrap-rails!
   uglifier (>= 1.0.3)

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120507012356) do
+ActiveRecord::Schema.define(:version => 20121201193703) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -69,6 +69,14 @@ ActiveRecord::Schema.define(:version => 20120507012356) do
   add_index "comments", ["commentable_id"], :name => "index_comments_on_commentable_id"
   add_index "comments", ["commentable_type"], :name => "index_comments_on_commentable_type"
   add_index "comments", ["user_id"], :name => "index_comments_on_user_id"
+
+  create_table "contacts", :force => true do |t|
+    t.string   "email"
+    t.text     "message"
+    t.string   "subject"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "email_invites", :force => true do |t|
     t.string   "email"

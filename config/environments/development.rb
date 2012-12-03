@@ -40,4 +40,6 @@ Videoapp::Application.configure do
 
   config.serve_static_assets = true
   
+  ENV["YOUTUBE_DEV_KEY"] = "AI39si6hkRNCL77mzzv1LycIohZtksVIi0L5S9lQMx6crqOfGdyKcB2U2M5WHeNBUT2VLgTVzjR9rxPa1RJZw-sZ6wqtnaZ7AA"
+
 end

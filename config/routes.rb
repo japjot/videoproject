@@ -1,5 +1,7 @@
 Videoapp::Application.routes.draw do
 
+  resources :contacts
+
   resources :email_invites
 
   ActiveAdmin.routes(self)
@@ -30,6 +32,9 @@ Videoapp::Application.routes.draw do
     end
   end 
 
+  match '/about' => 'static_pages#about', :as => :static_pages_about
+  match '/home' => 'static_pages#home'
+  match '/contact' => 'contacts#new', :as => :contact
 
   match '/beta' => 'videos#index'
 
@@ -83,7 +88,7 @@ Videoapp::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  root :to => 'videos#index'
+  root :to => 'static_pages#home'
 
   # See how all your routes lay out with "rake routes"
 

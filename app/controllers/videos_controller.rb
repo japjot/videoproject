@@ -23,7 +23,7 @@ class VideosController < ApplicationController
 
 
 
-    @yt_client = YouTubeIt::Client.new(:dev_key => "AI39si6hkRNCL77mzzv1LycIohZtksVIi0L5S9lQMx6crqOfGdyKcB2U2M5WHeNBUT2VLgTVzjR9rxPa1RJZw-sZ6wqtnaZ7AA")
+    @yt_client = YouTubeIt::Client.new(:dev_key => ENV["YOUTUBE_DEV_KEY"])
 
     @videos = Video.search(params[:search])
 

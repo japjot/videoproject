@@ -1,0 +1,79 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Contact Gloopt</title>
+<%= stylesheet_link_tag    "style", :media => "all" %>
+
+<link href='http://fonts.googleapis.com/css?family=Dosis:200,400,600' rel='stylesheet' type='text/css'>
+
+<%= stylesheet_link_tag    "reset", :media => "all" %>
+
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+	<script>
+		$(function() {
+			$("li").click(function(e) {
+			  // e.preventDefault();
+			  $("li").removeClass("selected");
+			  $(this).addClass("selected");
+			});
+		});
+	</script>
+</head>
+
+<body>
+
+<%= render 'static_pages/wrap_and_header' %> 
+
+<div id="content_wrap">
+<nav>
+
+<%= render 'static_pages/navigation' %> 
+
+</nav>
+<div class="col1">
+<div class="pagewrap">
+	<h1>Contact Us</h1>
+
+<p id="notice"><%= notice %></p>
+
+
+<%= render 'form' %>
+
+<br /><br />
+
+
+</div>    
+</div>
+	<!--on
+		<div class="col2">
+			<ul class="tabrow">
+			    <li><a href="selected">Recommended</a></li>
+			    <li><a href="#">Uploads</a></li>
+			</ul>
+		    <div class="sidebarvideo"><a href="#"><img src="assets/sidebar_thumbnail.jpg" width="120" height="70" alt="Video" /></a>
+		      <p><a href="#">Madeline Duva - Building trust</a></p><div class="views"><p>12,356 views</p></div></div>
+		    <div class="sidebarvideo"><a href="#"><img src="assets/sidebar_thumbnail.jpg" width="120" height="70" alt="Video" /></a>
+		      <p><a href="#">How can you get smarter with our 1 minute videos</a></p><div class="views"><p>12,356 views</p></div></div>
+		    <div class="sidebarvideo"><a href="#"><img src="assets/sidebar_thumbnail.jpg" width="120" height="70" alt="Video" /></a>
+		      <p><a href="#">Madeline Duva - Building trust</a></p><div class="views"><p>12,356 views</p></div></div>
+		    <div class="sidebarvideo"><a href="#"><img src="assets/sidebar_thumbnail.jpg" width="120" height="70" alt="Video" /></a>
+		      <p><a href="#">Madeline Duva - Building trust</a></p><div class="views"><p>12,356 views</p></div></div>
+		    <div class="sidebarvideo"><a href="#"><img src="assets/sidebar_thumbnail.jpg" width="120" height="70" alt="Video" /></a>
+		      <p><a href="#">Madeline Duva - Building trust</a></p><div class="views"><p>12,356 views</p></div></div>
+		    <div class="sidebarvideo"><a href="#"><img src="assets/sidebar_thumbnail.jpg" width="120" height="70" alt="Video" /></a>
+		      <p><a href="#">Madeline Duva - Building trust</a></p><div class="views"><p>12,356 views</p></div></div>
+		</div>
+	-->
+<div class="hfooter">&nbsp;</div>
+</div>
+
+</div>
+<div id="footer">
+	<div id="searchbar"></div>
+    <div class="footer_content"><p>&copy; 2012 All rights reserved.  Gloopt.com</p></div>
+</div>
+</body>
+</html>
+
