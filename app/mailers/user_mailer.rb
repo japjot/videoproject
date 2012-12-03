@@ -20,7 +20,7 @@ class UserMailer < ActionMailer::Base
 	def send_contact_email(contact)
 		@contact = contact 
 		@subject = 'Gloopt Contact Email-'+@contact.subject.to_s
-		mail(:to => "rcavezza@gmail.com", :from => @contact.email, :subject => @subject)
+		mail(:to => "info@gloopt.com", :from => @contact.email, :subject => @subject)
 	end
 
 end
