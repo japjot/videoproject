@@ -19,6 +19,10 @@ class Video < ActiveRecord::Base
 		return self.summary
 	end
 
+	def short_title 
+		return self.title[0,18]
+	end
+
 	def youtube_link
 		return self.url 
 	end
