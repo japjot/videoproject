@@ -31,11 +31,11 @@
 
 	<% unless @featured_video.blank? %>
 		<%= link_to @featured_video.show_image(110,70), @featured_video.url %><div class="f_title"><h1>Featured Video.<br /><br /><span class="subtitle"><%= @featured_video.featured_short_name %>.</span></h1></div>
+		<p><%= @featured_video.home_page_featured_description %></p>
 	<% end %>
 <!-- 
 	&nbsp; <span class="subtitle">Subtitle.</span> 
 -->
-<p><%= @featured_video.home_page_featured_description %></p>
 </div>
 </div>
 
