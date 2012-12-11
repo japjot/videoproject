@@ -2,7 +2,7 @@ class Video < ActiveRecord::Base
 	acts_as_voteable
 	acts_as_commentable
 	
-	attr_accessible :name, :summary, :source, :url, :location, :user_id, :duration
+	attr_accessible :name, :summary, :source, :url, :location, :user_id, :duration, :is_featured
 
 	# validates :user_id, presence: true
 	# validates :duration, presence: true 
@@ -11,10 +11,7 @@ class Video < ActiveRecord::Base
 														:message => 'this is not a valid youtube url'
 	# validates :youtube_id, presence: true 
 
-
-
 	# belongs_to :user 
-
   before_save do |video|
   	puts video.to_yaml
   	@url = video.url
@@ -43,6 +40,7 @@ class Video < ActiveRecord::Base
 	def short_name
 		return self.name[0,20]
 	end
+
 
 	def featured_short_name
 		return self.name[0,30]

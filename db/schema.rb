@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121201193703) do
+ActiveRecord::Schema.define(:version => 20121211011128) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -147,10 +147,11 @@ ActiveRecord::Schema.define(:version => 20121201193703) do
     t.string   "name"
     t.text     "summary"
     t.text     "url"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
     t.string   "youtube_id"
     t.integer  "duration"
+    t.boolean  "is_featured", :default => false
   end
 
   add_index "videos", ["user_id", "created_at"], :name => "index_videos_on_user_id_and_created_at"
